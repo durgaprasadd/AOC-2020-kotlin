@@ -38,7 +38,13 @@ fun getMutableMap(input: List<Int>): MutableMap<Int,Int>{
     }
     return mutableMap
 }
-
+fun getMutableMapLong(input: List<Long>): MutableMap<Long,Long>{
+    val mutableMap = mutableMapOf<Long,Long>()
+    for (ele in input){
+        mutableMap[ele] = ele
+    }
+    return mutableMap
+}
 fun calculateAsPairSumOptimize(expenses: List<Int>, sum: Int): Int? {
     val expensesMap = getMutableMap(expenses)
     return calculateAsPairSumOptimize(expenses,sum,expensesMap)
@@ -55,6 +61,21 @@ fun calculateAsPairSumOptimize(expenses: List<Int>, sum: Int, expensesMap: Mutab
     return null
 }
 
+fun calculateAsPairSumOptimize(expenses: List<Long>, sum: Long): Long? {
+    val expensesMap = getMutableMapLong(expenses)
+    return calculateAsPairSumOptimize(expenses,sum,expensesMap)
+}
+
+fun calculateAsPairSumOptimize(expenses: List<Long>, sum: Long, expensesMap: MutableMap<Long,Long>): Long? {
+    for (expense in expenses) {
+        val remExpense = sum - expense
+        val result = expensesMap[remExpense]
+        if (result != null) {
+            return remExpense * expense
+        }
+    }
+    return null
+}
 fun calculateAsTripletSumOptimize(expenses: List<Int>, sum: Int): Int? {
     val expensesMap = getMutableMap(expenses)
     for (expense in expenses){
