@@ -1,5 +1,8 @@
 package com.day25
 
+import com.day12.get
+import com.day17.getCombinations
+
 fun main() {
     val cardPublicKey = 19241437
     val doorPublicKey = 17346587
@@ -9,7 +12,14 @@ fun main() {
     println(transform(cardPublicKey.toLong(), doorLoopSize))
     println(transform(doorPublicKey.toLong(),cardLoopSize))
 }
+/*
+ 1 2 | 2 1
+ 3 4 | 4 3
+ ----
+ 3 4
+ 1 2
 
+ */
 fun transform(input: Long, loop: Int): Long {
     var n = 1L
     var i = 0
