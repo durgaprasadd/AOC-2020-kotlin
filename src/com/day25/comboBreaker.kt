@@ -1,17 +1,15 @@
 package com.day25
 
-import com.day12.get
-import com.day17.getCombinations
-
 fun main() {
     val cardPublicKey = 19241437
     val doorPublicKey = 17346587
-    println(listOf(listOf(1,2,3)) == listOf(listOf(1,2,3)))
+    println(listOf(listOf(1, 2, 3)) == listOf(listOf(1, 2, 3)))
     val cardLoopSize = getLoopSize(cardPublicKey)
     val doorLoopSize = getLoopSize(doorPublicKey)
     println(transform(cardPublicKey.toLong(), doorLoopSize))
-    println(transform(doorPublicKey.toLong(),cardLoopSize))
+    println(transform(doorPublicKey.toLong(), cardLoopSize))
 }
+
 /*
  1 2 | 2 1
  3 4 | 4 3
@@ -23,7 +21,7 @@ fun main() {
 fun transform(input: Long, loop: Int): Long {
     var n = 1L
     var i = 0
-    while (i != loop){
+    while (i != loop) {
         n = (n * input) % 20201227
         i += 1
     }
@@ -33,7 +31,7 @@ fun transform(input: Long, loop: Int): Long {
 fun getLoopSize(input: Int): Int {
     var n = 1
     var loopSize = 0
-    while (n != input){
+    while (n != input) {
         n = (n * 7) % 20201227
         loopSize += 1
     }
